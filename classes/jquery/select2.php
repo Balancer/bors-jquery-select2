@@ -1,11 +1,15 @@
 <?php
 
+// Для проверок: http://id.aviaport.wrk.ru/cabinets/1/managers/
+
 class jquery_select2
 {
 	function appear($el, $attrs)
 	{
-		bors_use('/_bors-3rd/jquery/plugins/select2-release-3.2/select2.css');
-		jquery::plugin('/_bors-3rd/jquery/plugins/select2-release-3.2/select2.js');
+		$base = config('jquery.select2.base');
+		bors_use("$base/select2.css");
+		jquery::plugin("$base/select2.min.js");
+		jquery::plugin("$base/select2_locale_ru.js");
 
 		$attrs = blib_json::encode_jsfunc($attrs);
 //		var_dump($attrs);
