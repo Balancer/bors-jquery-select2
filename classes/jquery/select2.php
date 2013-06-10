@@ -18,10 +18,10 @@ class jquery_select2
 
 	static function appear_ajax($el, $class_name, $params = array())
 	{
-		self::appear($el, array(
+		$params = array_merge($params, array(
 			'ajax' => array(
 				'minimumInputLength' => 3,
-//				'placeholder' => "Search for a movie",
+				'placeholder' => "Search for a movie",
 				'url' => '/_bors/data/lists/',
 				'data' => "function (text, page) { return {
 						class: '$class_name',
@@ -35,5 +35,7 @@ class jquery_select2
 				'results' => 'function (data, page) { return data }',
 			),
 		));
+
+		self::appear($el, $params);
 	}
 }
