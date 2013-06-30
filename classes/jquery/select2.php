@@ -18,6 +18,7 @@ class jquery_select2
 
 	static function appear_ajax($el, $class_name, $params = array())
 	{
+//	http://admin2.aviaport.wrk.ru/newses/257920/form2/
 		$params = array_merge($params, array(
 			'ajax' => array(
 				'minimumInputLength' => 3,
@@ -29,7 +30,7 @@ class jquery_select2
 						s: 10,
 						tpl: '{\"id\":\"id\",\"text\":\"".defval($params, 'title_field', 'title')."\"}',
 						order: \"".defval($params, 'order', 'title')."\",
-						search: \"title\",
+						search: \"".defval($params, 'search_fields', 'title')."\",
 						results: \"results\"
 					} }",
 				'results' => 'function (data, page) { return data }',
