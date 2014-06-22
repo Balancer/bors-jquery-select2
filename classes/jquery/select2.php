@@ -22,6 +22,7 @@ class jquery_select2
 		$title_field = popval($params, 'title_field', 'title');
 		$order = popval($params, 'order', 'title');
 		$search = popval($params, 'search_fields', 'title');
+		$width = popval($params, 'width', '');
 		popval($params, 'name');
 		popval($params, 'value');
 		popval($params, 'json');
@@ -38,7 +39,8 @@ class jquery_select2
 						tpl: '{\"id\":\"id\",\"text\":\"".$title_field."\"}',
 						order: \"".$order."\",
 						search: \"".$search."\",
-						results: \"results\"
+						results: \"results\",
+						width: \"".htmlspecialchars($width)."\"
 					} }",
 				'results' => 'function (data, page) { return data }',
 			),
