@@ -29,9 +29,14 @@ class jquery_select2
 		popval($params, 'json');
 
 		if(popval($params, 'dropdownAutoWidth'))
-			$autowidth = "dropdownAutoWidth: true,\n";
+			$autowidth = ", dropdownAutoWidth: true";
 		else
 			$autowidth = "";
+
+		if($width)
+			$width = ", width: \"".htmlspecialchars($width)."\"";
+		else
+			$width = "";
 
 //	http://admin2.aviaport.wrk.ru/newses/257920/form2/
 		$params = array_merge($params, array(
@@ -46,9 +51,9 @@ class jquery_select2
 						tpl: '{\"id\":\"id\",\"text\":\"".$title_field."\"}',
 						order: \"".$order."\",
 						search: \"".$search."\",
-						results: \"results\",
+						results: \"results\"
 						$autowidth
-						width: \"".htmlspecialchars($width)."\"
+						$width
 					} }",
 				'results' => 'function (data, page) { return data }',
 			),
