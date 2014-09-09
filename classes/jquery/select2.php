@@ -38,6 +38,9 @@ class jquery_select2
 		else
 			$width = "";
 
+		if(preg_match('/^\w+$/', $class_name))
+			$class_name = "'$class_name'";
+
 //	http://admin2.aviaport.wrk.ru/newses/257920/form2/
 		$params = array_merge($params, array(
 			'ajax' => array(
@@ -45,7 +48,7 @@ class jquery_select2
 //				'placeholder' => "Search for a movie",
 				'url' => '/_bors/data/lists/',
 				'data' => "function (text, page) { return {
-						class: '$class_name',
+						class: $class_name,
 						q: text,
 						s: 10,
 						tpl: '{\"id\":\"id\",\"text\":\"".$title_field."\"}',
