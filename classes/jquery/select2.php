@@ -34,7 +34,7 @@ class jquery_select2
 			$autowidth = "";
 
 		if($width)
-			$width = ", width: \"".htmlspecialchars($width)."\"";
+			$width = ", width:\"".htmlspecialchars($width)."\"";
 		else
 			$width = "";
 
