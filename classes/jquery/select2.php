@@ -41,6 +41,12 @@ class jquery_select2
 		if(preg_match('/^\w+$/', $class_name))
 			$class_name = "'$class_name'";
 
+		if(preg_match('/^[\w\-,`]+$/', $order))
+			$order = "'$order'";
+
+		if(preg_match('/^[\w\-,`]+$/', $search))
+			$search = "'$search'";
+
 //	http://admin2.aviaport.wrk.ru/newses/257920/form2/
 		$params = array_merge($params, array(
 			'ajax' => array(
@@ -52,8 +58,8 @@ class jquery_select2
 						q: text,
 						s: 10,
 						tpl: '{\"id\":\"id\",\"text\":\"".$title_field."\"}',
-						order: \"".$order."\",
-						search: \"".$search."\",
+						order: ".$order.",
+						search: ".$search.",
 						results: \"results\"
 						$autowidth
 						$width
