@@ -61,7 +61,7 @@ class jquery_select2
 				'data' => "function (text, page) { return {
 		class: $class_name,
 		q: text,
-		s: 10,
+		s: 50,
 		tpl: '{\"id\":\"id\",\"text\":\"".$title_field."\"}',
 		order: ".$order.",
 		search: ".$search.",
