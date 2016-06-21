@@ -53,8 +53,8 @@ class jquery_select2
 			$where = "";
 
 //	http://admin2.aviaport.wrk.ru/newses/257920/form2/
-		$params = array_merge($params, array(
-			'ajax' => array(
+		$js_params = array_merge($params, [
+			'ajax' => [
 				'minimumInputLength' => 2,
 //				'placeholder' => "Search for a movie",
 				'url' => '/_bors/data/lists/',
@@ -69,9 +69,25 @@ class jquery_select2
 	}
 }",
 				'results' => 'function (data, page) { return data }',
-			),
-		));
+			],
+		]);
 
-		self::appear($el, $params);
+		if(!empty($params['create_new']))
+		{
+			$js_params['createSearchChoice'] = 'function (term, data) {
+				if($(data).filter(function () {
+					return this.text.localeCompare(term) === 0;
+				}).length === 0) {
+					return {
+						id: term,
+						text: term
+					};
+				}
+			}';
+
+			$js_params['selectOnBlur'] = true;
+		}
+
+		self::appear($el, $js_params);
 	}
 }
