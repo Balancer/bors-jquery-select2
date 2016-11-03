@@ -6,15 +6,11 @@ class jquery_select2
 {
 	static function appear($el, $attrs)
 	{
-		$base = config('jquery.select2.base', '/_composer-components/select2');
-		bors_use("$base/select2.css");
-//		jquery::plugin("$base/select2.min.js");
-		jquery::plugin("$base/select2.js");
-		jquery::plugin("$base/select2_locale_ru.js");
+		bors_use("/bower-asset/select2/select2.css");
+		jquery::plugin("/bower-asset/select2/select2.min.js");
+		jquery::plugin("/bower-asset/select2/select2_locale_ru.js");
 
-//		var_dump($attrs);
 		$attrs = blib_json::encode_jsfunc($attrs);
-//		var_dump($attrs);
 		jquery::on_ready("$({$el}).select2($attrs)\n");
 	}
 
