@@ -1,6 +1,6 @@
 <?php
 
-// Для проверок: http://id.aviaport.wrk.ru/cabinets/1/managers/
+// Для проверок: https://id.aviaport.wrk.ru/cabinets/1/managers/
 
 class jquery_select2
 {
@@ -48,7 +48,7 @@ class jquery_select2
 		else
 			$where = "";
 
-//	http://admin2.aviaport.wrk.ru/newses/257920/form2/
+//	https://admin.aviaport.ru/newses/257920/form2/
 		$js_params = array_merge($params, [
 			'ajax' => [
 				'minimumInputLength' => 2,
