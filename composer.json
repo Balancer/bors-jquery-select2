@@ -1,0 +1,22 @@
+{
+    "name": "bors/jquery-select2",
+
+    "authors": [
+        { "name": "Balancer", "email": "balancer@balancer.ru" }
+    ],
+
+    "require": {
+        "bors/jquery": "*"
+    },
+
+	"suggest": {
+		"bower-asset/select2": "Needed 3.x (!) version if you want use local asset instead CDN"
+	},
+
+	"autoload": {
+		"psr-4": {
+			"classmap": ["./"],
+			"B2\\jQuery\\": "./"
+		}
+	}
+}

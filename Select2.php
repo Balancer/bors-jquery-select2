@@ -2,16 +2,39 @@
 
 // Для проверок: https://id.aviaport.wrk.ru/cabinets/1/managers/
 
-class jquery_select2
+namespace B2\jQuery;
+
+class Select2 extends \B2\jQuery\Plugin
 {
+	static function load($attrs = NULL)
+	{
+		\B2\jQuery::load();
+
+		// If not installed bower-asset/select2 then using CDN
+		if(empty(\bors::$bower_asset_packages['bower-asset/select2']))
+		{
+			\bors_use('https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.css');
+			\bors_use('https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.js');
+			\bors_use('https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2-bootstrap.min.css');
+			\bors_use('https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2_locale_ru.min.js');
+			return;
+		}
+
+		// Package bower-asset/jquery installed, use them
+		$bower_asset_path = \B2\Cfg::get('bower-asset.path', '/bower-asset');
+		\bors_use($bower_asset_path.'/jquery/dist/jquery.min.js');
+		\bors_use($bower_asset_path.'/select2.css');
+		\bors_use($bower_asset_path.'/select2.min.js');
+		\bors_use($bower_asset_path.'/select2-bootstrap.css');
+		\bors_use($bower_asset_path.'/select2_locale_ru.js');
+	}
+
 	static function appear($el, $attrs)
 	{
-		bors_use("/bower-asset/select2/select2.css");
-		jquery::plugin("/bower-asset/select2/select2.min.js");
-		jquery::plugin("/bower-asset/select2/select2_locale_ru.js");
+		self::load();
 
 		$attrs = blib_json::encode_jsfunc($attrs);
-		jquery::on_ready("$({$el}).select2($attrs)\n");
+		\B2\jQuery::on_ready("$({$el}).select2($attrs)\n");
 	}
 
 	static function appear_ajax($el, $class_name, $params = array())
