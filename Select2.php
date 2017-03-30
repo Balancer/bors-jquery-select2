@@ -21,8 +21,7 @@ class Select2 extends \B2\jQuery\Plugin
 		}
 
 		// Package bower-asset/jquery installed, use them
-		$bower_asset_path = \B2\Cfg::get('bower-asset.path', '/bower-asset');
-		\bors_use($bower_asset_path.'/jquery/dist/jquery.min.js');
+		$bower_asset_path = \B2\Cfg::get('bower-asset.path', '/bower-asset') . '/select2';
 		\bors_use($bower_asset_path.'/select2.css');
 		\bors_use($bower_asset_path.'/select2.min.js');
 		\bors_use($bower_asset_path.'/select2-bootstrap.css');
@@ -33,7 +32,7 @@ class Select2 extends \B2\jQuery\Plugin
 	{
 		self::load();
 
-		$attrs = blib_json::encode_jsfunc($attrs);
+		$attrs = \blib_json::encode_jsfunc($attrs);
 		\B2\jQuery::on_ready("$({$el}).select2($attrs)\n");
 	}
 
@@ -57,7 +56,7 @@ class Select2 extends \B2\jQuery\Plugin
 		else
 			$width = "";
 
-		if(preg_match('/^[\w\\]+$/', $class_name))
+		if(preg_match('/^[\w\\\\]+$/', $class_name))
 			$class_name = "'".addslashes($class_name)."'";
 
 		if(preg_match('/^[\w\-,`]+$/', $order))
