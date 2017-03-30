@@ -15,7 +15,7 @@
 
 	"autoload": {
 		"psr-4": {
-			"classmap": ["./"],
+			"classmap": ["classes/"],
 			"B2\\jQuery\\": "./"
 		}
 	}
