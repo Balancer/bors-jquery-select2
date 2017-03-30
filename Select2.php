@@ -57,8 +57,8 @@ class Select2 extends \B2\jQuery\Plugin
 		else
 			$width = "";
 
-		if(preg_match('/^\w+$/', $class_name))
-			$class_name = "'$class_name'";
+		if(preg_match('/^[\w\\]+$/', $class_name))
+			$class_name = "'".addslashes($class_name)."'";
 
 		if(preg_match('/^[\w\-,`]+$/', $order))
 			$order = "'$order'";
